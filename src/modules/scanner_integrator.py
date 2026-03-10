@@ -14,8 +14,16 @@ class ScannerIntegrator:
         summary = "\n".join(open_ports)
         
         prompt = (
-            f"以下是 Nmap 扫描发现的开放端口和服务：\n{summary}\n\n"
-            "请根据这些信息，识别高风险服务，并提供针对性的渗透测试建议。"
+            f"请作为一名顶级渗透测试专家，分析以下 Nmap 扫描发现的开放端口和服务：\n{summary}\n\n"
+            "请根据这些信息，识别高风险服务，并提供针对性的渗透测试建议、潜在攻击路径分析及风险等级评估。"
+        )
+        return self.agent.ask(prompt)
+
+    def parse_zap(self, zap_output):
+        """解析 OWASP ZAP 扫描结果并生成分析。"""
+        prompt = (
+            f"请作为一名顶级渗透测试专家，分析以下 OWASP ZAP 扫描发现的漏洞信息：\n\n{zap_output}\n\n"
+            "请根据这些信息，识别关键漏洞，并提供详细的修复建议、影响评估及进一步的手工测试建议。"
         )
         return self.agent.ask(prompt)
 

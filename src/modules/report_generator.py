@@ -1,5 +1,6 @@
 from src.llm_agent import LLMAgent
 import datetime
+import os
 
 class ReportGenerator:
     """ShadowLogic 的报告生成模块。"""
@@ -22,7 +23,10 @@ class ReportGenerator:
         report_content = self.agent.ask(prompt)
         
         # 将报告保存到本地
-        report_filename = f"report_{target}_{date}.md".replace("/", "_")
+        report_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "reports")
+        if not os.path.exists(report_dir):
+            os.makedirs(report_dir)
+        report_filename = os.path.join(report_dir, f"report_{target}_{date}.md".replace("/", "_"))
         with open(report_filename, 'w') as f:
             f.write(report_content)
             

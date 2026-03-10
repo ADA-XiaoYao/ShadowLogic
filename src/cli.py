@@ -80,6 +80,8 @@ def parse(tool, file):
         console.print(f"[bold blue]正在解析 {tool} 输出: {file}...[/bold blue]")
         if tool.lower() == 'nmap':
             result = integrator.parse_nmap(data)
+        elif tool.lower() == 'zap':
+            result = integrator.parse_zap(data)
         else:
             result = integrator.parse_generic(tool, data)
         console.print(Panel(result, title=f"[bold green]ShadowLogic {tool} 解析结果[/bold green]"))
