@@ -1,90 +1,90 @@
-# ShadowLogic 系统架构
+# ShadowLogic System Architecture
 
-## 1. 项目概述
+## 1. Project Overview
 
-**ShadowLogic** 是一款基于大型语言模型（LLM）的先进命令行渗透测试辅助工具。它将 AI 的逻辑推理能力与渗透测试的实战需求相结合，为安全研究人员提供智能化的漏洞分析、Payload 生成和决策支持。目标是创建一个智能、易用且可扩展的开源渗透测试平台。
+**ShadowLogic** is an advanced command-line penetration testing assistant tool powered by Large Language Models (LLM). It combines the logical reasoning capabilities of AI with the practical demands of penetration testing, providing security researchers with intelligent vulnerability analysis, payload generation, and decision support. The goal is to create an intelligent, user-friendly, and extensible open-source penetration testing platform.
 
-## 2. 核心功能模块
+## 2. Core Functional Modules
 
-ShadowLogic 包含以下核心功能模块：
+ShadowLogic will include the following core functional modules:
 
-### 2.1 智能漏洞分析
+### 2.1 Intelligent Vulnerability Analysis
 
-*   **漏洞识别与解释**：根据扫描结果或用户输入，利用 LLM 识别潜在漏洞，并提供详细的漏洞解释、影响评估和修复建议。
-*   **攻击路径分析**：分析多个漏洞之间的关联，推断可能的攻击链和利用路径。
-*   **上下文感知建议**：根据当前渗透测试阶段和目标系统信息，提供下一步操作的智能建议。
+*   **Vulnerability Identification and Explanation**: Utilizes LLM to identify potential vulnerabilities based on scan results or user input, providing detailed explanations, impact assessments, and remediation suggestions.
+*   **Attack Path Analysis**: Analyzes the relationships between multiple vulnerabilities to infer possible attack chains and exploitation paths.
+*   **Context-Aware Recommendations**: Provides intelligent suggestions for next steps based on the current penetration testing phase and target system information.
 
-### 2.2 Payload 生成与优化
+### 2.2 Payload Generation and Optimization
 
-*   **定制化 Payload**：根据目标漏洞类型、系统环境和用户需求，生成针对性的攻击 Payload（如 SQL 注入、XSS、命令注入等）。
-*   **编码与绕过**：自动对 Payload 进行编码（如 URL 编码、Base64 编码）和混淆，尝试绕过安全防护机制。
-*   **Payload 变种**：生成多种 Payload 变种，以增加成功利用的概率。
+*   **Customized Payloads**: Generates targeted attack payloads (e.g., SQL Injection, XSS, Command Injection) based on target vulnerability types, system environments, and user requirements.
+*   **Encoding and Bypass**: Automatically encodes (e.g., URL encoding, Base64 encoding) and obfuscates payloads to attempt bypassing security defense mechanisms.
+*   **Payload Variants**: Generates multiple payload variants to increase the probability of successful exploitation.
 
-### 2.3 扫描辅助与集成
+### 2.3 Scanner Assistance and Integration
 
-*   **Nmap 结果分析**：解析 Nmap 扫描结果，提取关键信息，并结合 LLM 提供进一步的渗透建议。
-*   **Burp Suite 集成（规划中）**：未来考虑与 Burp Suite 等流行工具集成，辅助流量分析和漏洞发现。
-*   **自动化信息收集**：辅助执行被动和主动信息收集任务，并对收集到的数据进行初步分析。
+*   **Nmap Result Analysis**: Parses Nmap scan results, extracts key information, and combines with LLM to provide further penetration suggestions.
+*   **Burp Suite Integration (Planned)**: Future consideration for integration with popular tools like Burp Suite to assist with traffic analysis and vulnerability discovery.
+*   **Automated Information Gathering**: Assists in performing passive and active information gathering tasks and conducts preliminary analysis of collected data.
 
-### 2.4 报告生成与总结
+### 2.4 Report Generation and Summary
 
-*   **自动化报告草稿**：根据渗透测试过程中收集的数据和发现的漏洞，自动生成结构化的渗透测试报告草稿。
-*   **漏洞详情填充**：自动填充漏洞描述、影响、修复建议和参考资料。
-*   **总结与建议**：利用 LLM 对整个测试过程进行总结，并提供高层级的安全建议。
+*   **Automated Report Draft**: Automatically generates structured penetration test report drafts based on data collected and vulnerabilities discovered during the penetration test.
+*   **Vulnerability Details Population**: Automatically populates vulnerability descriptions, impacts, remediation suggestions, and references.
+*   **Summary and Recommendations**: Utilizes LLM to summarize the entire testing process and provide high-level security recommendations.
 
-## 3. 系统架构
+## 3. System Architecture
 
-ShadowLogic 采用模块化设计，主要由以下组件构成：
+ShadowLogic will adopt a modular design, consisting of the following main components:
 
 ```mermaid
 graph TD
-    A[用户] --> B(命令行接口 CLI)
-    B --> C{核心控制器}
-    C --> D[LLM 交互模块]
-    C --> E[工具集成模块]
-    C --> F[数据处理与存储]
-    C --> G[报告生成模块]
+    A[User] --> B(Command Line Interface CLI)
+    B --> C{Core Controller}
+    C --> D[LLM Interaction Module]
+    C --> E[Tool Integration Module]
+    C --> F[Data Processing and Storage]
+    C --> G[Report Generation Module]
     D --> H[OpenAI / Gemini API]
-    E --> I[Nmap / 其他扫描器]
-    F --> J[本地数据库 / 文件系统]
-    G --> K[Markdown / PDF 输出]
+    E --> I[Nmap / Other Scanners]
+    F --> J[Local Database / File System]
+    G --> K[Markdown / PDF Output]
 ```
 
-### 3.1 命令行接口 (CLI)
+### 3.1 Command Line Interface (CLI)
 
-*   基于 Python 的 `Click` 库实现，提供友好的命令行交互。
-*   支持子命令和参数，方便用户调用不同功能模块。
+*   Implemented using Python's `Click` library, providing a user-friendly command-line interaction.
+*   Supports subcommands and parameters, making it easy for users to call different functional modules.
 
-### 3.2 核心控制器
+### 3.2 Core Controller
 
-*   负责协调各个模块的工作流程，解析用户命令，调用相应的处理逻辑。
-*   管理会话状态和上下文信息，确保 LLM 交互的连贯性。
+*   Responsible for coordinating the workflow of each module, parsing user commands, and calling corresponding processing logic.
+*   Manages session state and context information to ensure the coherence of LLM interactions.
 
-### 3.3 LLM 交互模块
+### 3.3 LLM Interaction Module
 
-*   封装与大型语言模型 API（如 OpenAI GPT 系列、Google Gemini 系列）的交互逻辑。
-*   负责构建合适的 Prompt，发送请求，并解析 LLM 返回的结果。
-*   实现 Prompt 工程，以最大化 LLM 在渗透测试场景中的效能。
+*   Encapsulates the interaction logic with large language model APIs (e.g., OpenAI GPT series, Google Gemini series).
+*   Responsible for constructing appropriate Prompts, sending requests, and parsing LLM responses.
+*   Implements Prompt engineering to maximize LLM effectiveness in penetration testing scenarios.
 
-### 3.4 工具集成模块
+### 3.4 Tool Integration Module
 
-*   负责与外部渗透测试工具（如 Nmap）进行交互，解析其输出，并将其转换为可供 LLM 处理的格式。
-*   提供统一的接口，方便未来集成更多工具。
+*   Responsible for interacting with external penetration testing tools (e.g., Nmap), parsing their output, and converting it into a format suitable for LLM processing.
+*   Provides a unified interface for easy integration of more tools in the future.
 
-### 3.5 数据处理与存储
+### 3.5 Data Processing and Storage
 
-*   用于存储渗透测试过程中收集的信息、漏洞发现、Payload 历史等。
-*   考虑使用轻量级数据库（如 SQLite）或文件系统进行数据持久化。
+*   Used to store information collected during penetration testing, vulnerability discoveries, payload history, etc.
+*   Considers using lightweight databases (e.g., SQLite) or file systems for data persistence.
 
-### 3.6 报告生成模块
+### 3.6 Report Generation Module
 
-*   将 LLM 生成的报告内容格式化为 Markdown 或其他报告格式。
-*   支持自定义报告模板。
+*   Formats LLM-generated report content into Markdown or other report formats.
+*   Supports custom report templates.
 
-## 4. 技术栈
+## 4. Technology Stack
 
-*   **编程语言**：Python 3.9+
-*   **CLI 框架**：`Click`
-*   **LLM 库**：`openai` 或 `google-generativeai`
-*   **数据存储**：`sqlite3` (Python 内置) 或文件系统
-*   **其他库**：`requests` (用于 API 调用)
+*   **Programming Language**: Python 3.9+
+*   **CLI Framework**: `Click`
+*   **LLM Library**: `openai` or `google-generativeai`
+*   **Data Storage**: `sqlite3` (Python built-in) or file system
+*   **Other Libraries**: `requests` (for API calls)

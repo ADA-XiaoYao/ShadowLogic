@@ -1,48 +1,48 @@
-# 更新日志
+# Changelog
 
-所有对 ShadowLogic 项目的重要更改都将记录在此文件中。
+All significant changes to the ShadowLogic project will be documented in this file.
 
-本项目遵循 [Semantic Versioning](https://semver.org/) 版本控制规范。
+This project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [0.1.0] - 2026-03-09
 
-### 新增
+### Added
 
-- **CLI 命令框架**：实现基于 Click 的命令行接口，支持多个子命令。
-- **漏洞分析模块**：实现 `analyze` 命令，支持目标分析和扫描结果解析。
-- **Payload 生成模块**：实现 `payload` 命令，支持多种漏洞类型的 Payload 生成。
-- **AI 咨询功能**：实现 `ask` 命令，支持直接向 AI 提问渗透测试相关问题。
-- **报告生成模块**：实现 `report` 命令，支持自动生成 Markdown 格式的渗透测试报告。
-- **扫描器集成**：实现 `parse` 命令，支持 Nmap、OWASP ZAP 等工具的输出解析。
-- **LLM 核心引擎**：集成 OpenAI API，实现高级 Prompt 工程和 Chain-of-Thought 思维链。
-- **数据管理模块**：实现会话数据的持久化存储。
-- **完整文档**：包括架构文档、使用指南、贡献指南和安全政策。
+- **CLI Command Framework**: Implemented a Click-based command-line interface with support for multiple subcommands.
+- **Vulnerability Analysis Module**: Implemented the `analyze` command, supporting target analysis and scan result parsing.
+- **Payload Generation Module**: Implemented the `payload` command, supporting payload generation for various vulnerability types.
+- **AI Consultation Feature**: Implemented the `ask` command, allowing direct queries to the AI for penetration testing related questions.
+- **Report Generation Module**: Implemented the `report` command, supporting automatic generation of Markdown-formatted penetration test reports.
+- **Scanner Integration**: Implemented the `parse` command, supporting output parsing from tools like Nmap and OWASP ZAP.
+- **LLM Core Engine**: Integrated OpenAI API, implementing advanced Prompt engineering and Chain-of-Thought reasoning.
+- **Data Management Module**: Implemented persistent storage for session data.
+- **Comprehensive Documentation**: Including architecture documentation, user guide, contribution guide, and security policy.
 
-### 改进
+### Improved
 
-- 优化 Prompt 工程，提升 AI 在渗透测试场景中的专业性和准确性。
-- 增强错误处理机制，提供更清晰的错误提示。
-- 改进 CLI 输出，使用 Rich 库提供更美观的表格和面板展示。
+- Optimized Prompt engineering to enhance the AI's professionalism and accuracy in penetration testing scenarios.
+- Enhanced error handling mechanisms, providing clearer error messages.
+- Improved CLI output, using the Rich library for more aesthetic table and panel displays.
 
-### 已知问题
+### Known Issues
 
-- 暂无已知问题。
+- No known issues at this time.
 
-## 计划中的功能
+## Planned Features
 
-- [ ] 支持更多扫描工具的集成（如 Burp Suite、Nikto）。
-- [ ] 实现 Web UI 界面。
-- [ ] 支持多语言输出。
-- [ ] 实现高级 Prompt 模板系统。
-- [ ] 支持漏洞数据库集成（如 NVD、CVE）。
-- [ ] 实现自动化渗透测试工作流。
+- [ ] Support for integration with more scanning tools (e.g., Burp Suite, Nikto).
+- [ ] Implementation of a Web UI.
+- [ ] Support for multi-language output.
+- [ ] Implementation of an advanced Prompt templating system.
+- [ ] Support for vulnerability database integration (e.g., NVD, CVE).
+- [ ] Implementation of automated penetration testing workflows.
 
-## 贡献者
+## Contributors
 
-感谢以下贡献者对 ShadowLogic 的支持：
+Thanks to the following contributors for their support of ShadowLogic:
 
 - Manus AI Team
 
-## 许可证
+## License
 
-本项目采用 MIT 许可证。详见 [LICENSE](LICENSE) 文件。
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

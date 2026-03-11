@@ -8,7 +8,7 @@ setup(
     version="0.1.0",
     author="ShadowLogic Team",
     author_email="team@shadowlogic.dev",
-    description="A cutting-edge AI-powered penetration testing assistant tool",
+    description="A cutting-edge AI-powered command-line penetration testing assistant tool",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/ADA-XiaoYao/ShadowLogic",

@@ -1,64 +1,67 @@
 # ShadowLogic AI
 
-**ShadowLogic** 是一款基于大型语言模型 (LLM) 的先进命令行渗透测试辅助工具。它将 AI 的逻辑推理能力与渗透测试的实战需求相结合，为安全研究人员提供智能化的漏洞分析、Payload 生成和决策支持。
+**ShadowLogic** is an advanced command-line penetration testing assistant tool powered by Large Language Models (LLM). It combines the logical reasoning capabilities of AI with the practical demands of penetration testing, providing security researchers with intelligent vulnerability analysis, payload generation, and decision support.
 
-## 核心特性
+## Key Features
 
-- 🧠 **智能漏洞分析**：解析扫描结果，识别潜在攻击面，并提供深度的逻辑分析。
-- 🧨 **定制 Payload 生成**：根据特定漏洞上下文，生成针对性的利用 Payload。
-- 🔍 **扫描集成辅助**：支持 Nmap 等工具的输出分析，将其转化为可操作的攻击建议。
-- 💬 **AI 渗透顾问**：随时通过命令行向 AI 咨询复杂的渗透测试问题。
+- 🧠 **Intelligent Vulnerability Analysis**: Parses scan results, identifies potential attack surfaces, and provides in-depth logical analysis.
+- 🧨 **Custom Payload Generation**: Generates targeted exploitation payloads based on specific vulnerability contexts.
+- 🔍 **Scanner Integration Assistance**: Supports analysis of outputs from tools like Nmap, transforming them into actionable attack recommendations.
+- 💬 **AI Penetration Consultant**: Ask complex penetration testing questions to the AI directly from the command line.
 
-## 快速开始
+## Quick Start
 
-### 安装
+### Installation
 
-1. 克隆仓库：
+1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/shadowlogic.git
-   cd shadowlogic
+   git clone https://github.com/ADA-XiaoYao/ShadowLogic.git
+   cd ShadowLogic
    ```
 
-2. 安装依赖：
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. 配置 API Key：
-   在环境变量中设置 `OPENAI_API_KEY`。
+3. Configure API Key:
+   Set your `OPENAI_API_KEY` as an environment variable.
 
-### 使用示例
+### Usage Examples
 
-- **分析 Nmap 扫描结果**：
+- **Analyze Nmap scan results**:
   ```bash
-  python pentest_ai.py analyze -f nmap_scan.txt
+  python shadowlogic.py analyze -f nmap_scan.txt
   ```
 
-- **生成 SQL 注入 Payload**：
+- **Generate SQL Injection Payload**:
   ```bash
-  python pentest_ai.py payload "SQL Injection" --context "id parameter in login page"
+  python shadowlogic.py payload "SQL Injection" --context "id parameter in login page"
   ```
 
-- **咨询渗透建议**：
+- **Consult for penetration advice**:
   ```bash
-  python pentest_ai.py ask "如何绕过特定 WAF 的 XSS 检测？"
+  python shadowlogic.py ask "How to bypass XSS detection of a specific WAF?"
   ```
 
-## 项目结构
+## Project Structure
 
 ```
 shadowlogic/
 ├── README.md
 ├── requirements.txt
-├── pentest_ai.py         # 程序入口
+├── LICENSE
+├── .gitignore
+├── shadowlogic.py        # Main entry point
 ├── src/
-│   ├── cli.py            # 命令行逻辑
-│   ├── llm_agent.py      # AI 核心引擎
-│   ├── modules/          # 功能模块
-│   └── utils/            # 工具类
-└── docs/                 # 项目文档
+│   ├── __init__.py
+│   ├── cli.py            # Command-line interface logic
+│   ├── llm_agent.py      # AI core engine
+│   ├── modules/          # Functional modules
+│   └── utils/            # Utility classes
+└── docs/                 # Project documentation
 ```
 
-## 免责声明
+## Disclaimer
 
-本工具仅用于合法的授权渗透测试和安全研究。使用者需遵守相关法律法规，严禁用于非法攻击。作者对因滥用本工具导致的任何后果不承担责任。
+This tool is intended for legitimate and authorized penetration testing and security research only. Users must comply with relevant laws and regulations, and any illegal attacks are strictly prohibited. The author is not responsible for any consequences resulting from the misuse of this tool.

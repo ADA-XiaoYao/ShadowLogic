@@ -2,7 +2,7 @@
 import sys
 import os
 
-# 将 src 目录添加到 Python 路径中
+# Add src directory to Python path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 from src.cli import cli

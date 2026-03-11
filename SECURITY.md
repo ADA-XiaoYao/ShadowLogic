@@ -1,61 +1,61 @@
-# 安全政策
+# Security Policy
 
-## 报告安全漏洞
+## Reporting Security Vulnerabilities
 
-如果您发现了 ShadowLogic 中的安全漏洞，请**不要**在公开的 Issue 中报告。为了保护用户安全，请按照以下步骤进行报告：
+If you discover a security vulnerability in ShadowLogic, please **do not** report it in public Issues. To protect user security, please follow these steps to report:
 
-### 报告流程
+### Reporting Process
 
-1. **发送电子邮件**至项目维护者（详见下方联系方式），邮件主题应包含 "Security Vulnerability Report"。
-2. **提供详细信息**：
-   - 漏洞的清晰描述。
-   - 受影响的版本。
-   - 复现步骤。
-   - 潜在的影响和严重性。
-   - 建议的修复方案（如果有）。
+1. **Send an email** to the project maintainers (see contact information below), with the subject line including "Security Vulnerability Report".
+2. **Provide detailed information**:
+   - A clear description of the vulnerability.
+   - Affected versions.
+   - Steps to reproduce.
+   - Potential impact and severity.
+   - Suggested remediation (if any).
 
-3. **等待回复**：我们将在 48 小时内确认收到您的报告，并在 7 天内提供初步评估。
+3. **Await Response**: We will acknowledge receipt of your report within 48 hours and provide an initial assessment within 7 days.
 
-### 联系方式
+### Contact Information
 
-- **电子邮件**：security@shadowlogic.dev
-- **GitHub Security Advisory**：[Report a vulnerability](https://github.com/ADA-XiaoYao/ShadowLogic/security/advisories/new)
+- **Email**: security@shadowlogic.dev
+- **GitHub Security Advisory**: [Report a vulnerability](https://github.com/ADA-XiaoYao/ShadowLogic/security/advisories/new)
 
-## 安全最佳实践
+## Security Best Practices
 
-### 使用 ShadowLogic 时的安全建议
+### Security Recommendations When Using ShadowLogic
 
-1. **仅在授权测试中使用**：ShadowLogic 应仅用于您有明确授权的渗透测试活动。
-2. **保护 API Key**：不要在代码中硬编码 API Key，使用环境变量或配置文件。
-3. **定期更新**：定期更新 ShadowLogic 及其依赖项以获取最新的安全补丁。
-4. **审计日志**：启用并定期审查应用日志以检测异常活动。
+1. **Use Only for Authorized Testing**: ShadowLogic should only be used for penetration testing activities for which you have explicit authorization.
+2. **Protect API Keys**: Do not hardcode API keys in your code; use environment variables or configuration files.
+3. **Regular Updates**: Regularly update ShadowLogic and its dependencies to get the latest security patches.
+4. **Audit Logs**: Enable and regularly review application logs to detect anomalous activities.
 
-### 开发者安全建议
+### Developer Security Recommendations
 
-1. **代码审查**：所有代码更改都应经过至少一名维护者的审查。
-2. **依赖管理**：定期检查和更新依赖项，使用工具如 `pip-audit` 检测已知漏洞。
-3. **安全测试**：在发布前进行安全测试，包括静态代码分析和动态测试。
+1. **Code Review**: All code changes should be reviewed by at least one maintainer.
+2. **Dependency Management**: Regularly check and update dependencies, using tools like `pip-audit` to detect known vulnerabilities.
+3. **Security Testing**: Conduct security testing before release, including static code analysis and dynamic testing.
 
-## 漏洞披露政策
+## Vulnerability Disclosure Policy
 
-- **协调披露**：我们遵循协调披露原则，在发布补丁后再公开披露漏洞。
-- **致谢**：如果您同意，我们将在发布说明中致谢您的贡献。
-- **时间表**：通常在收到报告后 30 天内发布补丁。
+- **Coordinated Disclosure**: We follow the principle of coordinated disclosure, publicly disclosing vulnerabilities only after a patch has been released.
+- **Acknowledgements**: If you agree, we will acknowledge your contribution in the release notes.
+- **Timeline**: Patches are typically released within 30 days of receiving a report.
 
-## 安全更新
+## Security Updates
 
-安全更新将通过以下渠道发布：
+Security updates will be announced through the following channels:
 
 - GitHub Releases
-- 项目文档
-- 社区通知
+- Project Documentation
+- Community Notifications
 
-## 合规性
+## Compliance
 
-ShadowLogic 致力于遵守以下安全标准和最佳实践：
+ShadowLogic is committed to adhering to the following security standards and best practices:
 
 - OWASP Top 10
 - CWE/SANS Top 25
-- Python 安全最佳实践
+- Python Security Best Practices
 
-感谢您帮助我们保持 ShadowLogic 的安全！
+Thank you for helping us keep ShadowLogic secure!

@@ -1,87 +1,176 @@
-# ShadowLogic 使用指南
+# ShadowLogic User Guide
 
-**ShadowLogic** 是一款基于 AI 的命令行渗透测试辅助工具，旨在帮助安全研究人员更高效地进行漏洞分析、Payload 生成和报告撰写。
+**ShadowLogic** is an AI-powered command-line penetration testing assistant tool designed to help security researchers conduct vulnerability analysis, payload generation, and report writing more efficiently.
 
-## 安装
+## Installation
 
-1.  **克隆仓库**：
+1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/shadowlogic.git
-    cd shadowlogic
+    git clone https://github.com/ADA-XiaoYao/ShadowLogic.git
+    cd ShadowLogic
     ```
 
-2.  **安装依赖**：
+2.  **Install dependencies**:
     ```bash
     pip install -r requirements.txt
     ```
 
-3.  **配置 API Key**：
-    ShadowLogic 依赖大型语言模型（LLM）提供智能服务。您需要设置相应的 API Key。目前支持 OpenAI API，请将您的 OpenAI API Key 设置为环境变量 `OPENAI_API_KEY`。
+3.  **Configure API Key**:
+    ShadowLogic relies on Large Language Models (LLM) for intelligent services. You need to set up the corresponding API Key. Currently, OpenAI API is supported; please set your OpenAI API Key as the environment variable `OPENAI_API_KEY`.
 
-    **Linux/macOS**：
+    **Linux/macOS**:
     ```bash
     export OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
     ```
 
-    **Windows (Command Prompt)**：
+    **Windows (Command Prompt)**:
     ```bash
     set OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
     ```
 
-    **Windows (PowerShell)**：
+    **Windows (PowerShell)**:
     ```powershell
     $env:OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
     ```
 
-## 命令概览
+## Command Overview
 
-ShadowLogic 提供以下主要命令：
+ShadowLogic provides the following main commands:
 
-*   `shadowlogic analyze`：分析目标或扫描结果中的潜在漏洞。
-*   `shadowlogic payload`：根据漏洞类型和上下文生成 Payload。
-*   `shadowlogic ask`：直接向 AI 提问渗透测试相关问题。
-*   `shadowlogic report`：根据发现的漏洞生成渗透测试报告。
-*   `shadowlogic parse`：解析扫描工具的输出并提供分析建议。
+*   `shadowlogic analyze`: Analyzes potential vulnerabilities in a target or scan results.
+*   `shadowlogic payload`: Generates payloads based on vulnerability type and context.
+*   `shadowlogic ask`: Directly asks the AI penetration testing related questions.
+*   `shadowlogic report`: Generates a penetration test report based on discovered vulnerabilities.
+*   `shadowlogic parse`: Parses scanner tool output and provides analysis recommendations.
 
-## 详细使用说明
+## Detailed Usage
 
-### 1. `analyze` - 漏洞分析
+### 1. `analyze` - Vulnerability Analysis
 
-此命令用于分析特定的渗透测试目标或已有的扫描结果文件，以识别潜在的漏洞和攻击面。
+This command is used to analyze specific penetration test targets or existing scan result files to identify potential vulnerabilities and attack surfaces.
 
-**用法**：
+**Usage**:
 
 ```bash
-shadowlogic analyze [--target <目标>] [--input-file <文件路径>]
+shadowlogic analyze [--target <target>] [--input-file <file_path>]
 ```
 
-**参数**：
+**Parameters**:
 
-*   `-t, --target <目标>`：指定要分析的目标，可以是 IP 地址、域名等。
-*   `-f, --input-file <文件路径>`：指定包含扫描结果的文件路径（例如 Nmap 输出）。
+*   `-t, --target <target>`: Specifies the target to analyze, which can be an IP address, domain name, etc.
+*   `-f, --input-file <file_path>`: Specifies the path to a file containing scan results (e.g., Nmap output).
 
-**示例**：
+**Examples**:
 
-*   分析特定目标：
+*   Analyze a specific target:
     ```bash
     shadowlogic analyze -t example.com
     ```
 
-*   分析 Nmap 扫描结果文件：
+*   Analyze an Nmap scan result file:
     ```bash
     shadowlogic analyze -f nmap_scan_results.txt
     ```
 
-### 2. `payload` - Payload 生成
+### 2. `payload` - Payload Generation
 
-此命令根据指定的漏洞类型和上下文信息，生成定制化的攻击 Payload。
+This command generates customized attack payloads based on the specified vulnerability type and context information.
 
-**用法**：
+**Usage**:
 
 ```bash
-shadowlogic payload <漏洞类型> [--context <上下文信息>]
+shadowlogic payload <vulnerability_type> [--context <context_information>]
 ```
 
-**参数**：
+**Parameters**:
 
-*   `<漏洞类型>`：必填，指定要生成 Payload 的漏洞类型（例如 
+*   `<vulnerability_type>`: Required, specifies the type of vulnerability for which to generate a payload (e.g., "SQL Injection", "XSS").
+*   `--context <context_information>`: Optional, provides additional context for payload generation, such as parameter names, injection points, or specific bypass techniques.
+
+**Examples**:
+
+*   Generate a basic SQL Injection payload:
+    ```bash
+    shadowlogic payload "SQL Injection" --context "login form username field"
+    ```
+
+*   Generate an XSS payload for a reflected XSS vulnerability:
+    ```bash
+    shadowlogic payload "Reflected XSS" --context "search query parameter"
+    ```
+
+### 3. `ask` - AI Penetration Consultant
+
+This command allows you to directly ask the ShadowLogic AI any penetration testing related questions.
+
+**Usage**:
+
+```bash
+shadowlogic ask "<your_question>"
+```
+
+**Parameters**:
+
+*   `<your_question>`: Required, the question you want to ask the AI.
+
+**Examples**:
+
+*   Ask for advice on WAF bypass techniques:
+    ```bash
+    shadowlogic ask "What are some effective techniques to bypass a WAF for SQL Injection?"
+    ```
+
+*   Inquire about common misconfigurations in cloud environments:
+    ```bash
+    shadowlogic ask "What are the most common security misconfigurations in AWS S3 buckets?"
+    ```
+
+### 4. `report` - Report Generation
+
+This command generates a structured penetration test report in Markdown format based on the discovered vulnerabilities and a summary of the test.
+
+**Usage**:
+
+```bash
+shadowlogic report --target <target> --vulnerabilities <vulnerabilities> --summary <summary>
+```
+
+**Parameters**:
+
+*   `-t, --target <target>`: Required, the target of the penetration test.
+*   `-v, --vulnerabilities <vulnerabilities>`: Required, a comma-separated list of discovered vulnerabilities (e.g., "SQL Injection, XSS, RCE").
+*   `-s, --summary <summary>`: Required, a brief summary of the penetration test findings.
+
+**Examples**:
+
+*   Generate a report for a web application:
+    ```bash
+    shadowlogic report -t webapp.com -v "SQL Injection, Broken Authentication" -s "Identified critical SQLi and authentication bypass vulnerabilities."
+    ```
+
+### 5. `parse` - Scanner Output Parsing
+
+This command parses the output from various security scanning tools and provides an AI-driven analysis and recommendations.
+
+**Usage**:
+
+```bash
+shadowlogic parse [--tool <tool_name>] --file <file_path>
+```
+
+**Parameters**:
+
+*   `-tl, --tool <tool_name>`: Optional, the name of the scanning tool (defaults to `nmap`). Currently supported: `nmap`, `zap`.
+*   `-f, --file <file_path>`: Required, the path to the output file from the scanning tool.
+
+**Examples**:
+
+*   Parse Nmap scan results:
+    ```bash
+    shadowlogic parse --tool nmap --file nmap_full_scan.xml
+    ```
+
+*   Parse OWASP ZAP scan results:
+    ```bash
+    shadowlogic parse --tool zap --file zap_report.json
+    ```

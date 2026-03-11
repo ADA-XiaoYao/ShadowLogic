@@ -3,26 +3,26 @@ import datetime
 import os
 
 class ReportGenerator:
-    """ShadowLogic 的报告生成模块。"""
+    """ShadowLogic's report generation module."""
     
     def __init__(self):
         self.agent = LLMAgent()
 
     def generate_markdown_report(self, target, vulnerabilities, summary):
-        """生成 Markdown 格式的渗透测试报告。"""
+        """Generates a Markdown-formatted penetration test report."""
         date = datetime.datetime.now().strftime("%Y-%m-%d")
         
         prompt = (
-            f"请为目标 {target} 生成一份结构化的渗透测试报告（Markdown 格式）。\n"
-            f"测试日期: {date}\n"
-            f"发现的漏洞列表: {vulnerabilities}\n"
-            f"测试总结: {summary}\n\n"
-            "报告应包含：1. 执行摘要, 2. 漏洞详情（描述、影响、修复建议）, 3. 总体安全建议。"
+            f"Please generate a structured penetration test report (in Markdown format) for the target {target}.\n"
+            f"Test Date: {date}\n"
+            f"Discovered Vulnerabilities: {vulnerabilities}\n"
+            f"Test Summary: {summary}\n\n"
+            "The report should include: 1. Executive Summary, 2. Vulnerability Details (description, impact, remediation suggestions), 3. Overall Security Recommendations."
         )
         
         report_content = self.agent.ask(prompt)
         
-        # 将报告保存到本地
+        # Save the report locally
         report_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "reports")
         if not os.path.exists(report_dir):
             os.makedirs(report_dir)
@@ -30,4 +30,4 @@ class ReportGenerator:
         with open(report_filename, 'w') as f:
             f.write(report_content)
             
-        return f"报告已生成并保存至: {report_filename}"
+        return f"Report generated and saved to: {report_filename}"

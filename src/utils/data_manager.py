@@ -2,7 +2,7 @@ import json
 import os
 
 class DataManager:
-    """ShadowLogic 的数据管理模块，负责会话和扫描数据的持久化。"""
+    """ShadowLogic's data management module, responsible for session and scan data persistence."""
     
     def __init__(self, data_dir=".shadowlogic_data"):
         self.data_dir = data_dir
@@ -10,13 +10,13 @@ class DataManager:
             os.makedirs(self.data_dir)
 
     def save_session(self, session_id, data):
-        """保存会话数据。"""
+        """Saves session data."""
         filepath = os.path.join(self.data_dir, f"{session_id}.json")
         with open(filepath, 'w') as f:
             json.dump(data, f, indent=4)
 
     def load_session(self, session_id):
-        """加载会话数据。"""
+        """Loads session data."""
         filepath = os.path.join(self.data_dir, f"{session_id}.json")
         if os.path.exists(filepath):
             with open(filepath, 'r') as f:
@@ -24,5 +24,5 @@ class DataManager:
         return None
 
     def list_sessions(self):
-        """列出所有已保存的会话。"""
+        """Lists all saved sessions."""
         return [f.replace(".json", "") for f in os.listdir(self.data_dir) if f.endswith(".json")]
